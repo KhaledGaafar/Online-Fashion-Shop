@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout</title>
+  <!-- sweet alert -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href="css/checkoutStyle.css">
+</head>
+
+<body>
+  <div class="checkout-container">
+    <h2>Checkout</h2>
+
+    <!-- Summary Section -->
+    <div class="summary">
+      <div class="summary-item">
+        <span>Subtotal:</span>
+        <span>$60.00</span>
+      </div>
+      <div class="summary-item">
+        <span>Tax (10%):</span>
+        <span>$6.00</span>
+      </div>
+      <div class="summary-item total">
+        <span>Total:</span>
+        <span>$66.00</span>
+      </div>
+    </div>
+
+    <!-- Payment Methods -->
+    <p class="payment-header">Select a Payment Method:</p>
+    <div class="payment-options">
+      <div class="payment-method">
+        <input type="radio" id="credit-card" name="payment-method" value="credit-card">
+        <label for="credit-card">Credit Card</label>
+      </div>
+      <div class="payment-method">
+        <input type="radio" id="cash-on-delivery" name="payment-method" value="cash-on-delivery">
+        <label for="cash-on-delivery">Cash on Delivery</label>
+      </div>
+    </div>
+
+    <!-- Credit Card Form -->
+    <div class="credit-card-form" id="credit-card-form">
+      <div class="form-group">
+        <label for="card-number">Card Number</label>
+        <input type="text" id="card-number" placeholder="1234 5678 9012 3456" maxlength="19">
+      </div>
+      <div class="form-group">
+        <label for="cardholder-name">Cardholder Name</label>
+        <input type="text" id="cardholder-name" placeholder="John Doe">
+      </div>
+      <div class="form-group">
+        <label for="expiry-date">Expiry Date</label>
+        <input type="text" id="expiry-date" placeholder="MM/YY" maxlength="5">
+      </div>
+      <div class="form-group">
+        <label for="cvv">CVV</label>
+        <input type="text" id="cvv" placeholder="123" maxlength="3">
+      </div>
+    </div>
+
+    <!-- Address Form (Visible for all Payment Methods) -->
+    <div class="address-form" id="address-form">
+      <p class="address-header">Enter your Delivery Address:</p>
+      <div class="form-group">
+        <label for="address-line1">Apartment Details</label>
+        <input type="text" id="address-line1" placeholder="Apartment number or name">
+      </div>
+      <div class="form-group">
+        <label for="address-line2">Street Name & Number</label>
+        <input type="text" id="address-line2" placeholder="Street name and number">
+      </div>
+      <div class="form-group">
+        <label for="city">City</label>
+        <input type="text" id="city" placeholder="City">
+      </div>
+      <div class="form-group">
+        <label for="country">Country</label>
+        <input type="text" id="country" placeholder="Country">
+      </div>
+    </div>
+
+    <!-- Map Section -->
+    <p class="map-header">Choose your delivery location:</p>
+    <div id="map"></div>
+
+    <!-- Confirm Button -->
+    <button class="proceed-btn" id="sold">Proceed to Checkout</button>
+  </div>
+
+  <!-- main style js -->
+  <script>
+    // Initialize the map
+    const map = L.map('map').setView([30.0444, 31.2357], 13);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+    const marker = L.marker([30.0444, 31.2357], { draggable: true }).addTo(map);
+    marker.on('dragend', function () {
+      const position = marker.getLatLng();
+    });
+    // Toggle Credit Card Form
+    const paymentMethods = document.querySelectorAll('input[name="payment-method"]');
+    const creditCardForm = document.getElementById('credit-card-form');
+
+    paymentMethods.forEach((method) => {
+      method.addEventListener('change', () => {
+        if (method.value === 'credit-card') {
+          creditCardForm.style.display = 'block';
+        } else {
+          creditCardForm.style.display = 'none';
+        }
+      });
+    });
+  </script>
+   <script> 
+    document.getElementById('sold').addEventListener('click', function() {
+    let count = localStorage.getItem('countofpurchace') ? parseInt(localStorage.getItem('countofpurchace')) : 0; 
+    count++; 
+    localStorage.setItem('countofpurchace', count.toString()); }); 
+  </script>
+
+  <script src="js/checkout.js"></script>
+  
+</body>
+
+</html>
