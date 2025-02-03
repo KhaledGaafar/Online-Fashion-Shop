@@ -20,5 +20,5 @@ Fashion-Shop is a fully responsive e-commerce platform designed for fashion enth
 
 1. **Clone the repository**:  
    ```bash  
-   git clone https://github.com/  
-   cd StyleSphere  
+   https://github.com/KhaledGaafar/Online-Fashion-Shop.git
+   cd Online-Fashion-Shop  
