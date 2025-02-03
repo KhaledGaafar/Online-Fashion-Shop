@@ -1,5 +1,4 @@
 # Online-Fashion-Shop
-
 ## 🛍️ About  
 Fashion-Shop is a fully responsive e-commerce platform designed for fashion enthusiasts. Browse the latest trends, manage your cart, and enjoy secure checkout. Built with modern web technologies to deliver a seamless shopping experience.  
 
@@ -9,7 +8,7 @@ Fashion-Shop is a fully responsive e-commerce platform designed for fashion enth
 - **Shopping Cart**: Add/remove items and adjust quantities.  
 - **Responsive Design**: Mobile-first, cross-device compatibility.   
 - **Admin Dashboard**: Manage products, orders, and users.
-- - **Seller Dashboard**: Manage  own products, orders.
+- **Seller Dashboard**: Manage  own products, orders.
 
 ## 🛠️ Tech Stack  
 - **Frontend**: HTML,CSS,JS,Bootstrap and Jquery
